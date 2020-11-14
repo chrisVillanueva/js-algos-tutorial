@@ -1,0 +1,21 @@
+{
+  "name": "jsalgosturotial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "functions-framework --target=jsAlgosTutorial",
+    "deploy": "gcloud functions deploy jsAlgosTutorial --runtime=nodejs10 --trigger-http --region=us-east1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.7.1",
+    "@google-cloud/secret-manager": "^3.2.0",
+    "@google-cloud/storage": "^5.4.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "qim": "0.0.52"
+  }
+}

@@ -1,0 +1,1 @@
+exports.GOOGLE_CLOUD_PROJECT_BUCKET = 'js-algos-tutorial-data';
