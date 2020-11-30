@@ -1,5 +1,5 @@
 /**
- * Calculate factorial.
+ * Calculate factorial (n!).
  * =========================
  * Example:
  * number = 5
@@ -7,13 +7,14 @@
  *
  * Big O
  * ========
- * time complexity   =>
+ * time complexity: Linear  =>
  *    O(number)
  *      for any value number,the total
  *      operations depends on number--if number
  *      increases, operations increase since recursion
  *      is like a for loop
- * space complexity  =>
+ * 
+ * space complexity: Linear  =>
  *    O(number)
  *      for any value number, the amount of 
  *      stack layers depends on number--the larger
@@ -38,19 +39,28 @@
 //  120
 
 function recursiveFactorialHelper(number){
-    console.log(
-        "recursiveFactorialHelper number => ", 
-        number
-    );
+    
+    //base case
     if (number === 0) {
+        console.log('reached base case: 0, return 1');
+        
         return 1;
-    }    
+    } 
+
+    console.log(
+        `recursiveFactorialHelper stack number => ${number}
+         recursiveFactorialHelper next number => ${(number -1)}
+        `
+    ); 
+
     return number * recursiveFactorialHelper(number - 1);
 };
 
 module.exports = function recursiveFactorial(q) {
     const { number } = q;
-    if (!number || number < 0) return 'invalid arguments';
+
+    if (!number || number < 0) return `recursiveFactorial => invalid arguments`;
+    
     return recursiveFactorialHelper(parseInt(number, 10));
 };
 

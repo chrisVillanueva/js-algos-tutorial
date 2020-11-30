@@ -1,12 +1,12 @@
 const express = require('express');
 const { 
-    getSection01,
+    getSection,
     getDefault,
 } = require('./routes'); 
 
 const app = express();
 
-app.use('/01', getSection01);
+app.use('/', getSection);
 app.use(getDefault);
 
 
