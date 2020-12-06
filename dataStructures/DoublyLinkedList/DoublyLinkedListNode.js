@@ -1,8 +1,8 @@
-class LinkedListNode {
-    
-    constructor(value, next = null) {
+class DoublyLinkedListNode {
+    constructor(value, next = null, previous = null) {
         this.value = value;
         this.next = next;
+        this.previous = previous;
     }
 
     toString(callback) {
@@ -11,4 +11,4 @@ class LinkedListNode {
 }
 
 
-module.exports = LinkedListNode;
+module.exports = DoublyLinkedListNode;

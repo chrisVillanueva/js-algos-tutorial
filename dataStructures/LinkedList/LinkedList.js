@@ -14,6 +14,7 @@ class LinkedList {
      * @return {LinkedList}
      */
     prepend(value) {
+
         // Make new node to be a head.
         const newNode = new LinkedListNode(value, this.head);
         this.head = newNode;
@@ -46,6 +47,68 @@ class LinkedList {
         // Attach new node to the end of linked list.
         this.tail.next = newNode;
         this.tail = newNode;
+
+        return this;
+    }
+
+    /**
+     * @param {Object} findParams
+     * @param {*} findParams.value
+     * @param {function} [findParams.callback]
+     * @return {LinkedListNode}
+     */
+    find({ value = undefined, callback = undefined }) {
+        if (!this.head) {
+            return null;
+        }
+
+        let currentNode = this.head;
+        
+        while (currentNode) {
+            // If callback is specified then try 
+            // to find node by callback.
+            if (callback && callback(currentNode.value)) {
+                return currentNode;
+            }
+
+            // If value is specified then try 
+            // to compare by value..
+            if (value !== undefined && this.compare.equal(currentNode.value, value)) {
+                return currentNode;
+            }
+
+            currentNode = currentNode.next;
+        }
+
+        return null;
+    }
+
+    /**
+     * Reverse a linked list.
+     * @returns {LinkedList}
+     */
+    reverse() {
+        let currNode = this.head;
+        let prevNode = null;
+        let nextNode = null;
+
+        while (currNode) {
+            // Store next node.
+            nextNode = currNode.next;
+
+            // Change next node of the current node 
+            // so it would link to previous node.
+            currNode.next = prevNode;
+
+            // Move prevNode and currNode nodes 
+            // one step forward.
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+
+        // Reset head and tail.
+        this.tail = this.head;
+        this.head = prevNode;
 
         return this;
     }
@@ -90,38 +153,6 @@ class LinkedList {
         }
 
         return deletedNode;
-    }
-
-    /**
-     * @param {Object} findParams
-     * @param {*} findParams.value
-     * @param {function} [findParams.callback]
-     * @return {LinkedListNode}
-     */
-    find({ value = undefined, callback = undefined }) {
-        if (!this.head) {
-            return null;
-        }
-
-        let currentNode = this.head;
-
-        while (currentNode) {
-            // If callback is specified then try 
-            // to find node by callback.
-            if (callback && callback(currentNode.value)) {
-                return currentNode;
-            }
-
-            // If value is specified then try 
-            // to compare by value..
-            if (value !== undefined && this.compare.equal(currentNode.value, value)) {
-                return currentNode;
-            }
-
-            currentNode = currentNode.next;
-        }
-
-        return null;
     }
 
     /**
@@ -209,35 +240,6 @@ class LinkedList {
         return this.toArray().map((node) => node.toString(callback)).toString();
     }
 
-    /**
-     * Reverse a linked list.
-     * @returns {LinkedList}
-     */
-    reverse() {
-        let currNode = this.head;
-        let prevNode = null;
-        let nextNode = null;
-
-        while (currNode) {
-            // Store next node.
-            nextNode = currNode.next;
-
-            // Change next node of the current node 
-            // so it would link to previous node.
-            currNode.next = prevNode;
-
-            // Move prevNode and currNode nodes 
-            // one step forward.
-            prevNode = currNode;
-            currNode = nextNode;
-        }
-
-        // Reset head and tail.
-        this.tail = this.head;
-        this.head = prevNode;
-
-        return this;
-    }
 }
 
 

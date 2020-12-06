@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "functions-framework --target=jsAlgosTutorial",
     "deploy": "gcloud functions deploy jsAlgosTutorial --runtime=nodejs10 --trigger-http --region=us-east1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./dataStructures/LinkedList"
   },
   "author": "",
   "license": "ISC",
